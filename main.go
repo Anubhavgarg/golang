@@ -35,7 +35,7 @@ func handleRequests() {
 	myRouter := mux.NewRouter().StrictSlash(true)
 	// replace http.HandleFunc with myRouter.HandleFunc
 	myRouter.HandleFunc("/", homePage)
-	myRouter.HandleFunc("/createInstance", createInstance).Methods("GET")
+	myRouter.HandleFunc("/createInstance", createInstance).Methods("POST")
 	// finally, instead of passing in nil, we want
 	// to pass in our newly created router as the second
 	// argument
@@ -56,7 +56,7 @@ func createInstance(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		fmt.Println(err)
 	}
-	req.Header.Add("authorization", "Bearer ya29.A0AfH6SMDCpmgdwaYjgG5xgUSmI0tx1S5_rAHsdeawFJpRuOV7rsupflvGoRQ8ZomsafH1noC8urlrRVdaeC5hhf5g9JIGWkqeydm7P67xKkJPyQ-RmANq1fQd-9d4NZT1tgmicmDCgJxyGdm8DrguHcUUgXAxPNDXyn7oAmlTPhgMwPTl0yS7")
+	// req.Header.Add("authorization", "Bearer ya29.A0AfH6SMB_VjbuA5hCpufIseMG1D8Pt7-CAzf0E6mQv7PXROujbr-8a0p5u2t1aEDo7X-FlV8ibwZBdtM16GZbk92ym2IFibmFtyiuFdh_tJMd3elq5kgzBqmEScayGEMIItS51dBr6K0Md7ZSoGSfBMtXQyqqwV7wakDhHUJdzQ6GjsUkS5c")
 	req.Header.Add("content-type", "application/json")
 	res, err := client.Do(req)
 	var posted m
