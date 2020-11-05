@@ -40,7 +40,6 @@ func deleteInstance(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		fmt.Println(err)
 	}
-	req.Header.Add("authorization", "Bearer ya29.A0AfH6SMC4IGjZj5aANtCla9p2e1HTjLfNePbSaFlIZpFRmWvVNrgsFGzAfJt-FHkCTJpwlLIhm2_nvRFFCyL4CgFCJ64vDWaYzKJQxwtobFPdRathXktcv9DaoGhhge7W-EEilHt_mLsip6Giov38eMt1PStJoIVE77ZAiqsbu5dThyzsh30")
 	req.Header.Add("content-type", "application/json")
 	res, err := client.Do(req)
 	var posted m
@@ -57,7 +56,6 @@ func stopInstance(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		fmt.Println(err)
 	}
-	req.Header.Add("authorization", "Bearer ya29.A0AfH6SMC4IGjZj5aANtCla9p2e1HTjLfNePbSaFlIZpFRmWvVNrgsFGzAfJt-FHkCTJpwlLIhm2_nvRFFCyL4CgFCJ64vDWaYzKJQxwtobFPdRathXktcv9DaoGhhge7W-EEilHt_mLsip6Giov38eMt1PStJoIVE77ZAiqsbu5dThyzsh30")
 	req.Header.Add("content-type", "application/json")
 	res, err := client.Do(req)
 	var posted m
@@ -79,7 +77,6 @@ func createInstance(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		fmt.Println(err)
 	}
-	req.Header.Add("authorization", "Bearer ya29.A0AfH6SMC4IGjZj5aANtCla9p2e1HTjLfNePbSaFlIZpFRmWvVNrgsFGzAfJt-FHkCTJpwlLIhm2_nvRFFCyL4CgFCJ64vDWaYzKJQxwtobFPdRathXktcv9DaoGhhge7W-EEilHt_mLsip6Giov38eMt1PStJoIVE77ZAiqsbu5dThyzsh30")
 	req.Header.Add("content-type", "application/json")
 	res, err := client.Do(req)
 	var posted m
