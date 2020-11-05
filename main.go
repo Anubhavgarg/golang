@@ -11,17 +11,6 @@ import (
 	"github.com/gorilla/mux"
 )
 
-type Article struct {
-	Title   string `json:"Title"`
-	Desc    string `json:"desc"`
-	Content string `json:"content"`
-}
-
-// let's declare a global Articles array
-// that we can then populate in our main function
-// to simulate a database
-var Articles []Article
-
 func homePage(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Welcome to the HomePage!")
 	fmt.Println("Endpoint Hit: homePage")
@@ -36,10 +25,44 @@ func handleRequests() {
 	// replace http.HandleFunc with myRouter.HandleFunc
 	myRouter.HandleFunc("/", homePage)
 	myRouter.HandleFunc("/createInstance", createInstance).Methods("POST")
-	// finally, instead of passing in nil, we want
-	// to pass in our newly created router as the second
-	// argument
+	myRouter.HandleFunc("/deleteInstance/{instanceName}", deleteInstance).Methods("POST")
+	myRouter.HandleFunc("/stopInstance/{instanceName}", stopInstance).Methods("POST")
 	log.Fatal(http.ListenAndServe(":10000", myRouter))
+}
+
+func deleteInstance(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	fmt.Println(vars)
+	url := "https://compute.googleapis.com/compute/beta/projects/western-notch-185412/zones/us-central1-a/instances/" + vars["instanceName"]
+	method := "DELETE"
+	client := &http.Client{}
+	req, err := http.NewRequest(method, url, nil)
+	if err != nil {
+		fmt.Println(err)
+	}
+	req.Header.Add("authorization", "Bearer ya29.A0AfH6SMC4IGjZj5aANtCla9p2e1HTjLfNePbSaFlIZpFRmWvVNrgsFGzAfJt-FHkCTJpwlLIhm2_nvRFFCyL4CgFCJ64vDWaYzKJQxwtobFPdRathXktcv9DaoGhhge7W-EEilHt_mLsip6Giov38eMt1PStJoIVE77ZAiqsbu5dThyzsh30")
+	req.Header.Add("content-type", "application/json")
+	res, err := client.Do(req)
+	var posted m
+	_ = json.NewDecoder(res.Body).Decode(&posted)
+	json.NewEncoder(w).Encode(posted)
+}
+func stopInstance(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	fmt.Println(vars)
+	url := "https://compute.googleapis.com/compute/beta/projects/western-notch-185412/zones/us-central1-a/instances/" + vars["instanceName"] + "/stop"
+	method := "POST"
+	client := &http.Client{}
+	req, err := http.NewRequest(method, url, nil)
+	if err != nil {
+		fmt.Println(err)
+	}
+	req.Header.Add("authorization", "Bearer ya29.A0AfH6SMC4IGjZj5aANtCla9p2e1HTjLfNePbSaFlIZpFRmWvVNrgsFGzAfJt-FHkCTJpwlLIhm2_nvRFFCyL4CgFCJ64vDWaYzKJQxwtobFPdRathXktcv9DaoGhhge7W-EEilHt_mLsip6Giov38eMt1PStJoIVE77ZAiqsbu5dThyzsh30")
+	req.Header.Add("content-type", "application/json")
+	res, err := client.Do(req)
+	var posted m
+	_ = json.NewDecoder(res.Body).Decode(&posted)
+	json.NewEncoder(w).Encode(posted)
 }
 
 func createInstance(w http.ResponseWriter, r *http.Request) {
@@ -56,7 +79,7 @@ func createInstance(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		fmt.Println(err)
 	}
-	// req.Header.Add("authorization", "Bearer ya29.A0AfH6SMB_VjbuA5hCpufIseMG1D8Pt7-CAzf0E6mQv7PXROujbr-8a0p5u2t1aEDo7X-FlV8ibwZBdtM16GZbk92ym2IFibmFtyiuFdh_tJMd3elq5kgzBqmEScayGEMIItS51dBr6K0Md7ZSoGSfBMtXQyqqwV7wakDhHUJdzQ6GjsUkS5c")
+	req.Header.Add("authorization", "Bearer ya29.A0AfH6SMC4IGjZj5aANtCla9p2e1HTjLfNePbSaFlIZpFRmWvVNrgsFGzAfJt-FHkCTJpwlLIhm2_nvRFFCyL4CgFCJ64vDWaYzKJQxwtobFPdRathXktcv9DaoGhhge7W-EEilHt_mLsip6Giov38eMt1PStJoIVE77ZAiqsbu5dThyzsh30")
 	req.Header.Add("content-type", "application/json")
 	res, err := client.Do(req)
 	var posted m
