@@ -10,7 +10,7 @@ import (
 	const project = "western-notch-185412"
 	const region = "us-central1"
 const zone = "us-central1-a"
-const namea = "sa"
+const namea = "sasdxsdada"
 
 type simple struct {
 	Error *compute.OperationError `json: "error"`
@@ -28,7 +28,7 @@ func main() {
 	response := <-finished
 	ad,_ := json.Marshal(response)
 	fmt.Println(string(ad),2)
-	time.Sleep(60 * time.Second)
+	time.Sleep(20 * time.Second)
 	finished1 := make(chan simple)
 	finished2 := make(chan simple)
 	go createSubnet(finished1, "subnetwork", "10.0.1.0/24", response.TargetLink)

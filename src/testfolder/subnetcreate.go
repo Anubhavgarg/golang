@@ -22,11 +22,13 @@ func createnet(x chan simple, name string) {
 	project := project // TODO: Update placeholder value.
 	rb := &compute.Network{
 		Name: name,
-		AutoCreateSubnetworks: true,
+		AutoCreateSubnetworks: false,
 		Mtu: 1460,
 		RoutingConfig: &compute.NetworkRoutingConfig{
 			RoutingMode: "REGIONAL",
 		},
+		Description: "creating the network",
+		ForceSendFields: []string{"AutoCreateSubnetworks"},
 	}
 
 	resp, err := computeService.Networks.Insert(project, rb).Context(ctx).Do()
