@@ -1,22 +1,15 @@
 package main
 
 import (
+	"fmt"
 	"golang.org/x/net/context"
-	"golang.org/x/oauth2/google"
 	"google.golang.org/api/compute/v1"
-	"log"
 )
-// createServiceAccount creates a service account.
-func 	createinstance( yahoo chan bool, name string,
-	networkName string, subNetwork string) {
-	ctx := context.Background()
-	c, err := google.DefaultClient(ctx, compute.CloudPlatformScope)
-	computeService, err := compute.New(c)
-	if err != nil {
-		log.Fatal(err)
-	}
+func createInstanceParams(ctx context.Context, computeService *compute.Service, name string,
+	networkName string, subNetwork string, projectName string, zone string) *response{
+	fmt.Println("projects/" + projectName + "/zones/" + zone  + "/machineTypes/n1-standard-1")
 	rb := &compute.Instance{
-		MachineType: "projects/western-notch-185412/zones/us-central1-a/machineTypes/n1-standard-1",
+		MachineType: "projects/" + projectName + "/zones/" + zone  + "/machineTypes/n1-standard-1",
 		Name: name,
 		Disks: []*compute.AttachedDisk{
 			{
@@ -40,10 +33,21 @@ func 	createinstance( yahoo chan bool, name string,
 			},
 		},
 	}
-	_, err = computeService.Instances.Insert(project, zone, rb).Context(ctx).Do()
+	resp, err := computeService.Instances.Insert(projectName, zone, rb).Context(ctx).Do()
 	if err != nil {
-		log.Fatal(err)
+		return MarshallUnmarshallCreationResponse(err, true)
+	} else {
+		responseNetCreation := MarshallUnmarshallCreationResponse(resp,false)
+		statusCheck := OperationStatus(ctx,computeService, projectName,
+			responseNetCreation.Id, "creation of instances", "zonal","",zone)
+		return statusCheck
 	}
-	yahoo <- true
 
+}
+
+// createServiceAccount creates a service account.
+func 	Createinstance( ctx context.Context, computeService *compute.Service, name string,
+	networkName string, subNetwork string, projectName string, zone string) *response {
+	instanceCreation := createInstanceParams(ctx, computeService, name, networkName, subNetwork, projectName, zone)
+	return instanceCreation
 }

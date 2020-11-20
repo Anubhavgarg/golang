@@ -9,7 +9,12 @@
       <change beforePath="$PROJECT_DIR$/../../main" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../main.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/instanceCreate.go" beforeDir="false" afterPath="$PROJECT_DIR$/instanceCreate.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/serviceAccount.go" beforeDir="false" afterPath="$PROJECT_DIR$/serviceAccount.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subnetcreate.go" beforeDir="false" afterPath="$PROJECT_DIR$/networkCreate.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +65,11 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="go.vgo" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/network" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
@@ -81,11 +91,11 @@
       <screen x="1440" y="0" width="1280" height="1024" />
     </state>
     <state x="1911" y="285" key="refactoring.ChangeSignatureDialog/1440.0.1280.1024/0.0.1440.900@1440.0.1280.1024" timestamp="1604923254921" />
-    <state x="343" y="200" width="754" height="595" key="search.everywhere.popup" timestamp="1605710739864">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="1745" y="227" width="670" height="676" key="search.everywhere.popup" timestamp="1605859799550">
+      <screen x="1440" y="0" width="1280" height="1024" />
     </state>
-    <state x="343" y="200" width="754" height="595" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1605710739864" />
-    <state x="1745" y="227" width="670" height="676" key="search.everywhere.popup/1440.0.1280.1024/0.0.1440.900@1440.0.1280.1024" timestamp="1605704284967" />
+    <state x="343" y="200" width="754" height="595" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1605800144400" />
+    <state x="1745" y="227" width="670" height="676" key="search.everywhere.popup/1440.0.1280.1024/0.0.1440.900@1440.0.1280.1024" timestamp="1605859799550" />
     <state x="1810" y="431" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1604924912040">
       <screen x="1440" y="0" width="1280" height="1024" />
     </state>
