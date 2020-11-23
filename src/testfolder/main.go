@@ -6,6 +6,9 @@ import (
 	"fmt"
 	"google.golang.org/api/compute/v1"
 	"golang.org/x/net/context"
+	"log"
+	"os"
+	"io/ioutil"
 )
 	const projectName = "western-notch-185412"
 	const regionName = "us-central1"
@@ -59,6 +62,9 @@ func add() (x int,y int) {
 	return  x,y
 }
 
+type ServiceToken struct {
+Token string `json:"token"`
+}
 func main() {
 	//first :=&check{
 	//	Find: "anubhav",
@@ -71,8 +77,22 @@ func main() {
 	//fmt.Println(sum,r)
 	ctx := context.Background()
 	finished := make(chan *response)
+     tokenFile := os.Getenv("TOKEN")
+     data, err  := ioutil.ReadFile(tokenFile)
+     if err != nil {
+     	log.Fatal(err)
+	 }
+	var serviceToken *ServiceToken
+	json.Unmarshal([]byte(data), &serviceToken)
+	scopes := []string {
+		"https://www.googleapis.com/auth/cloud-platform",
+		"https://www.googleapis.com/auth/cloudplatformprojects",
+		"https://www.googleapis.com/auth/service.management",
+		"https://www.googleapis.com/auth/iam",
+	}
+	tokenStr := serviceToken.Token
 	go CreatenetSubNetMachine(ctx, finished, networkName,
-		true, true, true, projectName)
+		true, false, false, projectName, tokenStr,scopes)
 	response := <-finished
 	ab,_ := json.Marshal(response)
 	fmt.Println(string(ab))

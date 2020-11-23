@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"golang.org/x/net/context"
 	"google.golang.org/api/compute/v1"
 )
@@ -36,8 +37,9 @@ func NetworkCreate(ctx context.Context,computeService *compute.Service,
 }
 func CreatenetSubNetMachine(ctx context.Context, x chan *response,
 	networkName string, networkCreate bool, subnetworkCreate bool,
-	instancesCreate bool, projectName string) {
-	computeService,_ := createComputeService(ctx)
+	instancesCreate bool, projectName string, token string, scopes []string) {
+	computeService,_ := createComputeService(ctx, token, scopes)
+	fmt.Println(computeService,"computeService")
 	if !networkCreate {
 		errorMessage := "Network creation is not enabled"
 		a := ResponseCreation(&errorMessage, true)
@@ -58,11 +60,11 @@ func CreatenetSubNetMachine(ctx context.Context, x chan *response,
 	go SubnetworkCreation(ctx, computeService,
 		networkName,"subnet creation",
 		"10.0.1.0/24",subnetworkName,projectName, regionName,
-		instancesCreate,netWorkCreateResponse,finished1)
+		instancesCreate,netWorkCreateResponse,finished1,"instance creation for " + subnetworkName)
 	go SubnetworkCreation(ctx, computeService,
 		networkName,"subnet creation",
 		"10.0.2.0/25",subnetworkNametwo,projectName, regionName,
-		instancesCreate,netWorkCreateResponse,finished2)
+		instancesCreate,netWorkCreateResponse,finished2,"instance creation for " + subnetworkNametwo)
 	response1 := <-finished1
 	response2 := <-finished2
 	if response1.isError {
@@ -102,19 +104,18 @@ func subnetworkParams(ctx context.Context, computeService *compute.Service,
 
 func SubnetworkCreation(ctx context.Context, computeService *compute.Service,
 	networkName string, description string, IP string, subnetworkName string,
-	projectname string, regionName string,instancesCreate bool, netWorkCreateResponse *response,x chan *response) {
+	projectname string, regionName string,instancesCreate bool, netWorkCreateResponse *response,x chan *response, instanceDescription string) {
 	paramsComputeNetwork := subnetworkParams(ctx, computeService,networkName,description,
 		IP,subnetworkName,projectname, regionName)
 	if(paramsComputeNetwork.isError) {
 		x <-paramsComputeNetwork
-		//return paramsComputeNetwork
 	}
 	if !instancesCreate {
 		errorMessage := "Network creation and subnetwork creation is done but instance is not created as it is not enabled"
 		res := ResponseCreation(&errorMessage, true)
 		x <-res
 	}
-	instanceCreationResponse := Createinstance(ctx, computeService, "instancecreation" + subnetworkName, netWorkCreateResponse.TargetLink,
+	instanceCreationResponse := Createinstance(ctx, computeService, instanceDescription + subnetworkName, netWorkCreateResponse.TargetLink,
 		paramsComputeNetwork.TargetLink,projectName,
 		zoneValue)
 	if(instanceCreationResponse.isError) {

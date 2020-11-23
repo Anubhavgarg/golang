@@ -9,12 +9,11 @@
       <change beforePath="$PROJECT_DIR$/../../main" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../main.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/computeService.go" beforeDir="false" afterPath="$PROJECT_DIR$/computeService.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instanceCreate.go" beforeDir="false" afterPath="$PROJECT_DIR$/instanceCreate.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serviceAccount.go" beforeDir="false" afterPath="$PROJECT_DIR$/serviceAccount.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/subnetcreate.go" beforeDir="false" afterPath="$PROJECT_DIR$/networkCreate.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/networkCreate.go" beforeDir="false" afterPath="$PROJECT_DIR$/networkCreate.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,6 +77,10 @@
     <integration-enabled>true</integration-enabled>
   </component>
   <component name="WindowStateProjectService">
+    <state x="1680" y="177" width="800" height="717" key="#Intentions" timestamp="1606118351892">
+      <screen x="1440" y="0" width="1280" height="1024" />
+    </state>
+    <state x="1680" y="177" width="800" height="717" key="#Intentions/1440.0.1280.1024/0.0.1440.900@1440.0.1280.1024" timestamp="1606118351892" />
     <state x="1844" y="321" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1604929521636">
       <screen x="1440" y="0" width="1280" height="1024" />
     </state>
@@ -91,11 +94,11 @@
       <screen x="1440" y="0" width="1280" height="1024" />
     </state>
     <state x="1911" y="285" key="refactoring.ChangeSignatureDialog/1440.0.1280.1024/0.0.1440.900@1440.0.1280.1024" timestamp="1604923254921" />
-    <state x="1745" y="227" width="670" height="676" key="search.everywhere.popup" timestamp="1605859799550">
+    <state x="1745" y="227" width="670" height="676" key="search.everywhere.popup" timestamp="1606124302304">
       <screen x="1440" y="0" width="1280" height="1024" />
     </state>
     <state x="343" y="200" width="754" height="595" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1605800144400" />
-    <state x="1745" y="227" width="670" height="676" key="search.everywhere.popup/1440.0.1280.1024/0.0.1440.900@1440.0.1280.1024" timestamp="1605859799550" />
+    <state x="1745" y="227" width="670" height="676" key="search.everywhere.popup/1440.0.1280.1024/0.0.1440.900@1440.0.1280.1024" timestamp="1606124302304" />
     <state x="1810" y="431" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1604924912040">
       <screen x="1440" y="0" width="1280" height="1024" />
     </state>
