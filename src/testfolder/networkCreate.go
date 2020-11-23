@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"golang.org/x/net/context"
 	"google.golang.org/api/compute/v1"
 )
@@ -39,7 +38,6 @@ func CreatenetSubNetMachine(ctx context.Context, x chan *response,
 	networkName string, networkCreate bool, subnetworkCreate bool,
 	instancesCreate bool, projectName string, token string, scopes []string) {
 	computeService,_ := createComputeService(ctx, token, scopes)
-	fmt.Println(computeService,"computeService")
 	if !networkCreate {
 		errorMessage := "Network creation is not enabled"
 		a := ResponseCreation(&errorMessage, true)
